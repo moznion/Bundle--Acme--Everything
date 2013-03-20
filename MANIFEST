@@ -1,0 +1,15 @@
+Build.PL
+bundle_acme_everything
+Changes
+lib/Bundle/Acme/Everything.pm
+LICENSE
+MANIFEST			This list of files
+META.json
+META.yml
+README
+t/00.load.t
+xt/00.pod.t
+xt/01.podspell.t
+xt/02.vars.t
+xt/10.fetch_acme_module_name_list.t
+xt/99.perlcritic.t

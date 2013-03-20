@@ -1,0 +1,12 @@
+#!perl
+
+use strict;
+use warnings;
+use utf8;
+use 5.008009;
+
+use Bundle::Acme::Everything;
+
+Bundle::Acme::Everything->install_everything;
+
+__END__

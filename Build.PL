@@ -1,8 +1,10 @@
 use strict;
 use warnings;
-use Module::Build;
+use Module::Build::Pluggable (
+    '+Module::Build::Pluggable::CPANfile',
+);
 
-my $builder = Module::Build->new(
+my $builder = Module::Build::Pluggable->new(
     name              => 'Bundle-AcmeEverything',
     module_name       => 'Bundle::Acme::Everything',
     script_files      => ['bundle_acme_everything'],
@@ -14,9 +16,10 @@ my $builder = Module::Build->new(
     },
     configure_requires => { 'Module::Build' => '0.40' },
     requires           => {
-        perl   => '5.008009',
-        'JSON' => '2.53',
-        'Furl' => '2.10',
+        perl             => '5.008009',
+        'App::cpanminus' => '1.6008',
+        'JSON'           => '2.53',
+        'Furl'           => '2.10',
     },
     no_index   => { 'directory' => ['inc'] },
     meta_merge => {

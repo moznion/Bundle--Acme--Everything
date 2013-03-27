@@ -43,17 +43,12 @@ sub _fetch_acme_module_name_list {
     return @modules;
 }
 
-sub _choose_cpan_frontend {
-    return 'cpanm' if ( eval { require App::cpanminus } );
-    return 'cpan'  if ( eval { require App::Cpan } );
-    croak "! This system has no cpan shell. Please install.\n";
-}
-
 sub install_everything {
-    my $cpan_frontend = _choose_cpan_frontend;
-    my @modules = _fetch_acme_module_name_list;
+    my $cpan_frontend = 'cpanm';
+    my $opt           = '--notest';
+    my @modules       = _fetch_acme_module_name_list;
 
-    system "$cpan_frontend @modules";
+    system "$cpan_frontend $opt @modules";
 }
 
 1;
@@ -86,12 +81,18 @@ This document describes Bundle::Acme::Everything version 0.01
 
 This module provides the only one function that installs the all of Acme modules.
 
-This module uses MetaCPAN API to fetch a list of all Acme modules.
+
+=head1 NOTICE
+
+Bundle::Acme::Everything module uses MetaCPAN API to fetch a list of all Acme modules,
+so this module connects to MetaCPAN.
+
+And Bundle::Acme::Everything installs modules without tests (it means this module always apply --notest option).
 
 
 =head1 DEPENDENCIES
 
-App::Cpan or App::cpanminus (cpanm preferred over the cpan shell)
+App::cpanminus (version 1.6008 or later)
 
 JSON (version 2.53 or later)
 

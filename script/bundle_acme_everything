@@ -7,6 +7,8 @@ use 5.008009;
 
 use Bundle::Acme::Everything;
 
-Bundle::Acme::Everything->install_everything;
+Bundle::Acme::Everything->install_everything(@ARGV);
 
 __END__
+
+# TODO: Write docs!!!

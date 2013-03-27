@@ -7,19 +7,12 @@ use Module::Build::Pluggable (
 my $builder = Module::Build::Pluggable->new(
     name              => 'Bundle-AcmeEverything',
     module_name       => 'Bundle::Acme::Everything',
-    script_files      => ['bundle_acme_everything'],
+    script_files      => ['script/bundle_acme_everything'],
     license           => 'perl',
     dist_author       => 'moznion <moznion@gmail.com>',
     dist_version_from => 'lib/Bundle/Acme/Everything.pm',
-    build_requires    => {
-        'Test::More' => '0.98',
-    },
-    configure_requires => { 'Module::Build' => '0.40' },
     requires           => {
         perl             => '5.008009',
-        'App::cpanminus' => '1.6008',
-        'JSON'           => '2.53',
-        'Furl'           => '2.10',
     },
     no_index   => { 'directory' => ['inc'] },
     meta_merge => {

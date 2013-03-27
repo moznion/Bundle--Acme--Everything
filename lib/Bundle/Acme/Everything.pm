@@ -9,6 +9,7 @@ our $VERSION = '0.01';
 
 use JSON;
 use Furl;
+use List::Util qw/first/;
 use constant {
     METACPAN_BASE_URL => 'http://api.metacpan.org',
     API_DISTRIBUTION  => '/v0/distribution/_search',
@@ -44,11 +45,16 @@ sub _fetch_acme_module_name_list {
 }
 
 sub install_everything {
-    my $cpan_frontend = 'cpanm';
-    my $opt           = '--notest';
-    my @modules       = _fetch_acme_module_name_list;
+    my (@options) = @_;
 
-    system "$cpan_frontend $opt @modules";
+    my $cpan_frontend = 'cpanm';
+
+    my $do_test = first { $_ eq '--testament' } @options;
+    push( @options, '--notest' ) unless $do_test;
+
+    my @modules = _fetch_acme_module_name_list;
+
+    system "$cpan_frontend @options @modules";
 }
 
 1;
@@ -88,6 +94,7 @@ Bundle::Acme::Everything module uses MetaCPAN API to fetch a list of all Acme mo
 so this module connects to MetaCPAN.
 
 And Bundle::Acme::Everything installs modules without tests (it means this module always apply --notest option).
+Please specify '--testament' (<= the great band!) option if you want to install modules with tests.
 
 
 =head1 DEPENDENCIES

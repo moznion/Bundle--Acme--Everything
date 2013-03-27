@@ -1,12 +1,13 @@
 Build.PL
-bundle_acme_everything
 Changes
+cpanfile
 lib/Bundle/Acme/Everything.pm
 LICENSE
 MANIFEST			This list of files
 META.json
 META.yml
 README
+script/bundle_acme_everything
 t/00.load.t
 xt/00.pod.t
 xt/01.podspell.t

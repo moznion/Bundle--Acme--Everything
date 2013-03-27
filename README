@@ -17,10 +17,16 @@ DESCRIPTION
     This module provides the only one function that installs the all of Acme
     modules.
 
-    This module uses MetaCPAN API to fetch a list of all Acme modules.
+NOTICE
+    Bundle::Acme::Everything module uses MetaCPAN API to fetch a list of all
+    Acme modules, so this module connects to MetaCPAN.
+
+    And Bundle::Acme::Everything installs modules without tests (it means
+    this module always apply --notest option). Please specify '--testament'
+    (<= the great band!) option if you want to install modules with tests.
 
 DEPENDENCIES
-    App::Cpan or App::cpanminus (cpanm preferred over the cpan shell)
+    App::cpanminus (version 1.6008 or later)
 
     JSON (version 2.53 or later)
 

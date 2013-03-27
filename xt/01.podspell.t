@@ -26,3 +26,4 @@ JSON
 MetaCPAN
 cpan
 cpanm
+notest

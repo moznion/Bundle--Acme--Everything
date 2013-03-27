@@ -76,11 +76,15 @@ This document describes Bundle::Acme::Everything version 0.01
 
     use Bundle::Acme::Everything;
 
-    Bundle::Acme::Everything->install_everything(); # => Rock'n'Roll
+    Bundle::Acme::Everything::install_everything(@options); # => Rock'n'Roll
+                                                            # you can specify cpanm options
 
     # or you can execute preparated script that provides the same function
 
-    $ bundle_acme_everything
+    $ bundle_acme_everything         # => install the all of Acme modules
+
+    $ bundle_acme_everything --force # => install the all of Acme modules with force
+                                     # also you can specify cpanm options
 
 
 =head1 DESCRIPTION
@@ -90,12 +94,16 @@ This module provides the only one function that installs the all of Acme modules
 
 =head1 NOTICE
 
-Bundle::Acme::Everything module uses MetaCPAN API to fetch a list of all Acme modules,
+Bundle::Acme::Everything uses MetaCPAN API to fetch a list of all Acme modules,
 so this module connects to MetaCPAN.
 
 And Bundle::Acme::Everything installs modules without tests (it means this module always apply --notest option).
 Please specify '--testament' (<= the great band!) option if you want to install modules with tests.
 
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+This module uses cpanm which is on your system. So please configure it.
 
 =head1 DEPENDENCIES
 

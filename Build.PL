@@ -1,25 +1,23 @@
 use strict;
 use warnings;
-use Module::Build::Pluggable (
-    '+Module::Build::Pluggable::CPANfile',
-);
+use Module::Build::Pluggable ( '+Module::Build::Pluggable::CPANfile', );
 
 my $builder = Module::Build::Pluggable->new(
-    name              => 'Bundle-AcmeEverything',
+    name              => 'Bundle-Acme-Everything',
     module_name       => 'Bundle::Acme::Everything',
     script_files      => ['script/bundle_acme_everything'],
     license           => 'perl',
     dist_author       => 'moznion <moznion@gmail.com>',
     dist_version_from => 'lib/Bundle/Acme/Everything.pm',
-    requires           => {
-        perl             => '5.008009',
+    requires          => {
+        perl => '5.008009',
     },
     no_index   => { 'directory' => ['inc'] },
     meta_merge => {
         'resources' => {
             'license' => 'http://dev.perl.org/licenses/',
             'repository' =>
-              'git://github.com/moznion/p5-Bundle--Acme--Everything.git',
+              'git://github.com/moznion/Bundle--Acme--Everything.git',
         },
     },
     test_files => ( -d '.git' || $ENV{RELEASE_TESTING} ) ? 't/ xt/' : 't/',
